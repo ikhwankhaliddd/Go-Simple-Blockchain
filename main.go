@@ -170,6 +170,7 @@ func main() {
 
 	BlockChain = NewBlockChain()
 	r := mux.NewRouter()
+	r.Use(mux.CORSMethodMiddleware(r))
 	r.HandleFunc("/", getBlockchain).Methods("GET")
 	r.HandleFunc("/", writeBlock).Methods("POST")
 	r.HandleFunc("/new", newBook).Methods("POST")
